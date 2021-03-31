@@ -40,6 +40,9 @@ componentDidMount () {
   //   })
   this.db
     .collection('products')
+    // .where('price','>', 999)
+    // .where('title','==','jeans')
+    .orderBy('price')
     .onSnapshot((snapshot)=>{
       console.log(snapshot);
 
@@ -180,7 +183,7 @@ addProduct = () => {
     <div className="App">
       
         <Navbar count = {this.getCartCount()}/>
-        <button onClick={this.addProduct} style={{padding:20, fontSize:20}}>Add a product</button>
+        {/* <button onClick={this.addProduct} style={{padding:20, fontSize:20}}>Add a product</button> */}
         <Cart
         products = {products}
         onIncreaseQuantity = {this.handleIncreaseQuantity}
